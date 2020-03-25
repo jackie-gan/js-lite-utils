@@ -1,3 +1,8 @@
+/**
+ * 简单实现柯里化
+ * 
+ * 参数复用、立即返回、延迟计算；
+ */
 function currying(func) {
   const args = [].slice.call(arguments, 1);
 
