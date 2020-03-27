@@ -9,3 +9,5 @@ function addMethod(target, method, newFunc) {
     }
   }
 }
+
+export default addMethod;

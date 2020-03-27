@@ -7,7 +7,8 @@ function flattern(arr) {
   }, []);
 }
 
-function flattern(value) {
+
+function flattern2(value) {
   const ret = [];
 
   for (let i = 0; i < value.length; i++ ) {
