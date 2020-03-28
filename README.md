@@ -7,3 +7,4 @@ js 工具方法
 - 数组扁平化  flattern
 - 函数重载  override
 - 快排 quicksort
+- 大数相加 bigadd
