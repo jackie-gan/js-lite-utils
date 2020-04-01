@@ -8,8 +8,12 @@ function currying(func) {
 
   return function() {
     const newArgs = args.concat([].slice.call(arguments));
-    
-    return func.apply(null, newArgs);
+
+    if (newArgs.length < func.length) {
+      return currying.call(this, func, ...newArgs);
+    } else {
+      return func.apply(this, newArgs);
+    }
   }
 }
 

@@ -9,4 +9,16 @@ describe('test currying', () => {
     expect(genPath('aaa')).toBe('http://jackie.gan/aaa');
     expect(genPath('bbb')).toBe('http://jackie.gan/bbb');
   })
+
+  it('test case 2', () => {
+    function addNum(a, b, c) {
+      return a + b + c;
+    }
+
+    const add = currying(addNum);
+
+    const res = add(1)(2)(3);
+
+    expect(res).toBe(6);
+  })
 });
