@@ -10,6 +10,19 @@ class EventEmitter {
     return this;
   }
 
+  off(event, callback) {
+    const callbacks = this.subscribers[event] || [];
+
+    if (callback) {
+      const index = callbacks.indexOf(callback);
+      if (index > -1) callbacks.splice(index, 1);
+    } else {
+      callbacks.length = 0;
+    }
+
+    return this;
+  }
+
   emit(event) {
     const callbacks = this.subscribers[event];
 
