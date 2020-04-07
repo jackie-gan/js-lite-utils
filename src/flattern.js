@@ -8,17 +8,41 @@ function flattern(arr) {
 }
 
 
-function flattern2(value) {
+function flattern2(arr) {
   const ret = [];
 
-  for (let i = 0; i < value.length; i++ ) {
-    if (Array.isArray(value[i])) {
-      ret = ret.concat(flattern(value[i]));
+  for (let i = 0; i < arr.length; i++ ) {
+    if (Array.isArray(arr[i])) {
+      ret = ret.concat(flattern2(arr[i]));
     } else {
-      ret.push(value);
+      ret.push(arr[i]);
     }
   }
   return ret;
+}
+
+/**
+ * 非递归
+ */
+function flattern3(arr) {
+  const stack = [];
+  const res = [];
+  
+  stack.push(arr);
+  while (stack.length > 0) {
+    const array = stack.pop();
+    while (array.length > 0) {
+      const item = array.shift();
+      if (!Array.isArray(item)) {
+        res.push(item);
+      } else {
+        stack.push(array);
+        stack.push(item);
+        break;
+      }
+    }
+  }
+  return res;
 }
 
 export default flattern;
