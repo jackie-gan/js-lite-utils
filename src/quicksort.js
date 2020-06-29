@@ -1,5 +1,5 @@
 /**
- * 快速排序
+ * 快速排序，递归
  */
 function quicksort(arr) {
   if (arr.length <= 1) return arr;
@@ -16,4 +16,32 @@ function quicksort(arr) {
   return quicksort(left).concat([pivot], quicksort(right));
 }
 
-export default quicksort;
+/**
+ * 快速排序，非递归
+ */
+function quickSort(arr) {
+  var left = 0, right = arr.length - 1;
+  var sortStack = [[left, right]];
+  while (sortStack.length > 0) {
+      var pointer = sortStack.pop();
+      var lp = pointer[0], rp = pointer[1], pivot = pointer[0];
+
+      if (lp >= rp) continue;
+      
+      while (lp < rp) {
+          while (arr[rp] > arr[pivot] && rp > pivot) rp--;
+          if (lp >= rp) break;
+          while (arr[lp] <= arr[pivot] && lp < rp) lp++;
+          var temp = arr[pivot];
+          arr[pivot] = arr[rp];
+          arr[rp] = arr[lp];
+          arr[lp] = temp;
+          pivot = lp; 
+      }
+      sortStack.push([pointer[0], pivot - 1]);
+      sortStack.push([pivot + 1, pointer[1]]);
+  }
+  return arr;
+}
+
+export default quickSort;
