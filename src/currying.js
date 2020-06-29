@@ -10,6 +10,7 @@ function currying(func) {
     const newArgs = args.concat([].slice.call(arguments));
 
     if (newArgs.length < func.length) {
+      // 参数少于形参长度，则将继续接收参数
       return currying.call(this, func, ...newArgs);
     } else {
       return func.apply(this, newArgs);
