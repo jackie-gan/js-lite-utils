@@ -1,22 +1,37 @@
+const toString = Object.prototype.toString;
+
+function isArray(target) {
+  return toString.call(target) === '[object Array]';
+}
+
+function isPlainObject(target) {
+  return toString.call(target) === '[object Object]';
+}
+
 /**
  * 深拷贝
  */
-function deepclone(obj) {
-  if (typeof obj !== 'object') return obj;
+function deepclone(target) {
+  let result;
+  
+  if (isPlainObject(target)) {
+    result = {};
 
-  const newObj = Array.isArray(obj) ? [] : {};
-
-  for (let key in obj) {
-    if (Object.prototype.toString.call(obj[key]) === '[object Object]') {
-      newObj[key] = deepclone(obj[key]);
-    } else if (Object.prototype.toString.call(obj[key]) === '[object Array]') {
-      newObj[key] = deepclone(obj[key]);
-    } else {
-      newObj[key] = obj[key];
+    for (const key in target) {
+      result[key] = deepclone(target[key]);
     }
+  } else if (isArray(target)) {
+    result = [];
+
+    const len = target.length;
+    for (let i = 0; i < len; i++) {
+      result.push(deepclone(target[i]));
+    }
+  } else {
+    result = target;
   }
 
-  return newObj;
+  return result;
 }
 
 export default deepclone;
