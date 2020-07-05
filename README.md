@@ -13,3 +13,4 @@ js 工具方法
 - 观察者模式EventEmitter
 - 手动实现bind，支持new操作
 - 基本类型判断
+- new操作符
