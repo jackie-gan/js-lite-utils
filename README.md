@@ -14,3 +14,4 @@ js 工具方法
 - 手动实现bind，支持new操作
 - 基本类型判断
 - new操作符
+- 数组合并 array-union
