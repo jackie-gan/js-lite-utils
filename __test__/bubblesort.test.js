@@ -1,4 +1,4 @@
-import bubblesort from '../src/bubblesourt';
+import bubblesort from '../src/bubblesort';
 
 describe('test bubblesort', () => {
   it('test case 1', () => {
