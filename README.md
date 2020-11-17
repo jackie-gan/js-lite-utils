@@ -17,3 +17,5 @@ js 工具方法
 - new操作符
 - 数组合并 array-union
 - 归并排序
+- 计算年龄 caculate age
+- 判断纯对象 is plain object
