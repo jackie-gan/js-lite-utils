@@ -19,3 +19,4 @@ js 工具方法
 - 归并排序
 - 计算年龄 caculate age
 - 判断纯对象 is plain object
+- 唤醒客户端 wake up client
