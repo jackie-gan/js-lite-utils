@@ -38,23 +38,25 @@ export class LinkedList {
     delete(value) {
         if (!this.head) return;
 
-        let current = this.head;
-        while (current && current.value !== value) {
-            current = current.next;
-        }
-
-        if (!current) return;
-
-        if (current === this.head) {
+        if (this.head.value === value) {
             if (this.head === this.tail) {
-                this.head = null;
-                this.tail = null;
+                this.head = this.tail = null;
             } else {
                 this.head = this.head.next;
             }
             return;
-        } else {
-            current
         }
+
+        let current = this.head;
+        while (current.next && current.next.value !== value) {
+            current = current.next;
+        }
+
+        if (!current.next) return;
+
+        if (current.next === this.tail) {
+            this.tail = current;
+        }
+        current.next = current.next.next;
     }
 }
