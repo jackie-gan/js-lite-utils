@@ -1,4 +1,4 @@
-import { asyncPool } from "../../src/async-pool/index.es6";
+import { asyncPool } from "../../src/async-pool/index.es7";
 
 describe('test async pool es6', function() {
     let ret = [];
