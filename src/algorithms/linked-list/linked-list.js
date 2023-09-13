@@ -1,8 +1,10 @@
 import { LinkedListNode } from './linked-list-node'
 
 export class LinkedList {
-    head = null;
-    tail = null;
+    constructor() {
+        this.head = null;
+        this.tail = null;
+    }
 
     add(value) {
         const node = new LinkedListNode(value);
@@ -24,15 +26,15 @@ export class LinkedList {
         }
     }
 
-    contains(value) {
-        if (!this.head) return false;
-
-        let current = this.head;
-        while (current) {
-            if (current.value === value) return true;
-            current = current.next;
+    insert(value, position) {
+        const node = new LinkedListNode(value);
+        const index = position < 0 ? 0 : position;
+        if (index === 0) {
+            this.prepend(value);
+        } else {
+            let i = 0;
+            let current = this.head;
         }
-        return false;
     }
 
     delete(value) {
@@ -58,5 +60,32 @@ export class LinkedList {
             this.tail = current;
         }
         current.next = current.next.next;
+    }
+
+    contains(value) {
+        if (!this.head) return false;
+
+        let current = this.head;
+        while (current) {
+            if (current.value === value) return true;
+            current = current.next;
+        }
+        return false;
+    }
+
+    toArray() {
+        const arr = [];
+        let current = this.head;
+
+        while (current) {
+            arr.push(current.value);
+            current = current.next;
+        }
+
+        return arr;
+    }
+
+    toString() {
+        return this.toArray().toString();
     }
 }
