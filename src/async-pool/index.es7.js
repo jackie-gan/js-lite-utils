@@ -4,21 +4,18 @@
  */
 export async function asyncPool(cocurrency, iterables, iteratorFn) {
     const rets = [];
-    const executings = [];
+    const executings = new Set();
 
     for (const item of iterables) {
         const p = Promise.resolve().then(() => iteratorFn(item, iterables));
+        const clean = () => executings.delete(p);
+        p.then(clean).catch(clean);
+
         rets.push(p);
+        executings.add(p);
 
-        if (cocurrency <= iterables.length) {
-            const end = p.then(() => {
-                return executings.splice(executings.indexOf(end), 1)
-            });
-            executings.push(end);
-
-            if (executings.length >= cocurrency) {
-                await Promise.race(executings);
-            }
+        if (executings.size >= cocurrency) {
+            await Promise.race(executings);
         }
     }
 
