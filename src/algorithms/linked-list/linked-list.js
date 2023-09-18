@@ -32,8 +32,26 @@ export class LinkedList {
         if (index === 0) {
             this.prepend(value);
         } else {
-            let i = 0;
+            let i = 1;
             let current = this.head;
+
+            while (i !== position && current) {
+                i++;
+                current = current.next;
+            }
+
+            if (current) {
+                node.next = current.next;
+                current.next = node;
+            } else {
+                if (this.tail) {
+                    this.tail.next = node;
+                    this.tail = node;
+                } else {
+                    this.tail = node;
+                    this.head = node;
+                }
+            }
         }
     }
 
