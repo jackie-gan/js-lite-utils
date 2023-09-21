@@ -31,7 +31,37 @@ export class DoublyLinkedList {
     }
 
     insert(value, position) {
+        const node = new DoublyLinkedListNode(value);
 
+        if (this.head) {
+            if (position) {
+                let i = 0;
+                let current = this.head;
+                while(i !== position && current) {
+                    i++;
+                    current = current.next;
+                }
+
+                if (current) {
+                    current.previous.next = node;
+                    node.previous = current.previous;
+                    node.next = current;
+                    current.previous = node;
+                } else {
+                    this.add(value);
+                }
+            } else {
+                this.prepend(value);
+            }
+        } else {
+            this.head = this.tail = node;
+        }
+    }
+
+    delete(value) {
+        if (!this.head) return;
+
+        
     }
 
     toArray() {
