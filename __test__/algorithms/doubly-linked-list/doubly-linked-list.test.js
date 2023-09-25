@@ -49,4 +49,18 @@ describe('test doubly linked list', () => {
         expect(dLinkedList.tail.previous.value).toBe(2);
         expect(dLinkedList.toString()).toBe('1,2,3');
     });
+
+    it('delete node from linked list', () => {
+        const dLinkedList = new DoublyLinkedList();
+
+        dLinkedList.add(1);
+        dLinkedList.add(2);
+        dLinkedList.add(3);
+
+        expect(dLinkedList.toString()).toBe('1,2,3');
+
+        const deletedNode = dLinkedList.delete(2);
+        expect(dLinkedList.toString()).toBe('1,3');
+        expect(deletedNode.value).toBe(2);
+    })
 });

@@ -1,3 +1,4 @@
+// 单向链表
 import { LinkedListNode } from './linked-list-node'
 
 export class LinkedList {

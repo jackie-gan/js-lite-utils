@@ -1,3 +1,4 @@
+// 双向链表
 import { DoublyLinkedListNode } from './doubly-linked-list-node';
 
 export class DoublyLinkedList {
@@ -61,7 +62,38 @@ export class DoublyLinkedList {
     delete(value) {
         if (!this.head) return;
 
-        
+        let deletedNode = undefined;
+        let current = this.head;
+
+        while (current) {
+            if (current.value === value) {
+                deletedNode = current;
+
+                if (this.head === deletedNode) {
+                    this.head = deletedNode.next;
+
+                    if (this.head) {
+                        this.head.previous = null;
+                    }
+
+                    if (this.tail === deletedNode) {
+                        this.tail = null;
+                    }
+                } else if (this.tail === deletedNode) {
+                    deletedNode.previous.next = null;
+                    this.tail = deletedNode.previous;
+                } else {
+                    deletedNode.previous.next = deletedNode.next;
+                    deletedNode.next.previous = deletedNode.previous;
+                }
+
+                break;
+            }
+
+            current = current.next;
+        }
+
+        return deletedNode;
     }
 
     toArray() {
