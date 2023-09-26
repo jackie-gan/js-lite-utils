@@ -1,14 +1,14 @@
 // 队列
 export class Queue {
-    constructor(){
+    constructor() {
         this.queue = [];
     }
     
-    enqueue(element){
+    enqueue(element) {
         this.queue.push(element);
     }
 
-    dequeue(){
+    dequeue() {
         return this.queue.shift();
     }
 
@@ -16,7 +16,7 @@ export class Queue {
         return !this.queue.length;
     }
 
-    peek(){
+    peek() {
         return this.queue[0];
     }
 
