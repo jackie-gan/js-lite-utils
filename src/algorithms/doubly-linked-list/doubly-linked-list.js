@@ -96,6 +96,30 @@ export class DoublyLinkedList {
         return deletedNode;
     }
 
+    contains(value) {
+        if (!this.head) return false;
+
+        let current = this.head;
+        while(current) {
+            if (current.value === value) return true;
+            current = current.next;
+        }
+
+        return false;
+    }
+
+    find(callback) {
+        if (!this.head || typeof callback !== 'function') return null;
+
+        let current = this.head;
+        while (current) {
+            if (callback(current.value)) return current;
+            current = current.next;
+        }
+
+        return current;
+    }
+
     toArray() {
         const arr = [];
         let current = this.head;

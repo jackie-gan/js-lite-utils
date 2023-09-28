@@ -44,4 +44,37 @@ describe('test linked list', () => {
     
         expect(linkedList.toString()).toBe('1,4,2,3,10');
     });
+
+    it('find node from linked list', () => {
+        const linkedList = new LinkedList();
+
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        
+        const finded = linkedList.find((nodeValue) => {
+            return nodeValue === 2;
+        });
+
+        expect(finded.value).toBe(2);
+
+        const notFinded = linkedList.find((nodeValue) => {
+            return nodeValue === 4;
+        });
+
+        expect(notFinded).toBeNull();
+    });
+
+    it('delete node from linked list', () => {
+        const linkedList = new LinkedList();
+        
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        expect(linkedList.toString()).toBe('1,2,3');
+
+        const deleted = linkedList.delete(2);
+        expect(linkedList.toString()).toBe('1,3');
+        expect(deleted.value).toBe(2);
+    });
 });

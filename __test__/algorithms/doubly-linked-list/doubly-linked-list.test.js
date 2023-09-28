@@ -62,5 +62,25 @@ describe('test doubly linked list', () => {
         const deletedNode = dLinkedList.delete(2);
         expect(dLinkedList.toString()).toBe('1,3');
         expect(deletedNode.value).toBe(2);
+    });
+
+    it('find node from linked list', () => {
+        const dLinkedList = new DoublyLinkedList();
+
+        dLinkedList.add(1);
+        dLinkedList.add(2);
+        dLinkedList.add(3);
+        
+        const finded = dLinkedList.find((nodeValue) => {
+            return nodeValue === 2;
+        });
+
+        expect(finded.value).toBe(2);
+
+        const notFinded = dLinkedList.find((nodeValue) => {
+            return nodeValue === 4;
+        });
+
+        expect(notFinded).toBeNull();
     })
 });

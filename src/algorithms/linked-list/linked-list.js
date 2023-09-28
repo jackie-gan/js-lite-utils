@@ -57,7 +57,7 @@ export class LinkedList {
     }
 
     delete(value) {
-        if (!this.head) return;
+        if (!this.head) return null;
 
         if (this.head.value === value) {
             if (this.head === this.tail) {
@@ -65,7 +65,7 @@ export class LinkedList {
             } else {
                 this.head = this.head.next;
             }
-            return;
+            return this.head;
         }
 
         let current = this.head;
@@ -73,12 +73,15 @@ export class LinkedList {
             current = current.next;
         }
 
-        if (!current.next) return;
+        if (!current.next) return null;
 
         if (current.next === this.tail) {
             this.tail = current;
         }
+        const deleted = current.next;
         current.next = current.next.next;
+
+        return deleted;
     }
 
     contains(value) {
@@ -90,6 +93,18 @@ export class LinkedList {
             current = current.next;
         }
         return false;
+    }
+
+    find(callback) {
+        if (!this.head || typeof callback !== 'function') return null;
+
+        let current = this.head;
+        while (current) {
+            if (callback(current.value)) break;
+            current = current.next;
+        }
+
+        return current;
     }
 
     toArray() {
