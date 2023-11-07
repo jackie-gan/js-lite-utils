@@ -1,4 +1,4 @@
-import { Queue } from '../../src/algorithms/queue';
+import { Queue } from '../../src/data-structure/queue';
 
 describe('test queue', () => {
     it('test empy queue', () => {

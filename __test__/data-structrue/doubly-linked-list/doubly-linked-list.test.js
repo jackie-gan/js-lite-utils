@@ -1,4 +1,4 @@
-import { DoublyLinkedList } from '../../../src/algorithms/doubly-linked-list/doubly-linked-list';
+import { DoublyLinkedList } from '../../../src/data-structure/doubly-linked-list/doubly-linked-list';
 
 describe('test doubly linked list', () => {
     it('create empty linked list', () => {

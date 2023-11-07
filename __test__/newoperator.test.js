@@ -6,7 +6,7 @@ describe('test new operator', () => {
 
     expect(() => {
       newOperator(target);
-    }).toThrow(new Error('target should be a function'));
+    }).toThrow('target should be a function');
   });
   
   it('test case 2', () => {

@@ -1,4 +1,4 @@
-import { HashTable } from '../../src/algorithms/hash-table';
+import { HashTable } from '../../src/data-structure/hash-table';
 
 describe('test hash table', () => {
     it('test empty hash table', () => {

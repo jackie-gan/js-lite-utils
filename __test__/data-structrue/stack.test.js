@@ -1,4 +1,4 @@
-import { Stack } from '../../src/algorithms/stack';
+import { Stack } from '../../src/data-structure/stack';
 
 describe('test Stack', () => {
     it('test empty stack', () => {

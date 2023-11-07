@@ -1,4 +1,4 @@
-import { LinkedList } from '../../../src/algorithms/linked-list/linked-list';
+import { LinkedList } from '../../../src/data-structure/linked-list/linked-list';
 
 describe('test linked list', () => {
     it('create empty linked list', () => {
