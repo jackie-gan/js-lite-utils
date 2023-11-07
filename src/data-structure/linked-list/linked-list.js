@@ -1,10 +1,13 @@
 // 单向链表
-import { LinkedListNode } from './linked-list-node'
+import { LinkedListNode } from './linked-list-node';
+import { Comparator } from '../util/comparator';
 
 export class LinkedList {
-    constructor() {
+    constructor(compFunc) {
         this.head = null;
         this.tail = null;
+
+        this.compare = new Comparator(compFunc)
     }
 
     add(value) {
@@ -59,7 +62,7 @@ export class LinkedList {
     delete(value) {
         if (!this.head) return null;
 
-        if (this.head.value === value) {
+        if (this.compare.equal(this.head.value, value)) {
             if (this.head === this.tail) {
                 this.head = this.tail = null;
             } else {
@@ -69,7 +72,7 @@ export class LinkedList {
         }
 
         let current = this.head;
-        while (current.next && current.next.value !== value) {
+        while (current.next && !this.compare.equal(current.next.value, value)) {
             current = current.next;
         }
 
@@ -89,7 +92,7 @@ export class LinkedList {
 
         let current = this.head;
         while (current) {
-            if (current.value === value) return true;
+            if (this.compare.equal(current.value, value)) return true;
             current = current.next;
         }
         return false;

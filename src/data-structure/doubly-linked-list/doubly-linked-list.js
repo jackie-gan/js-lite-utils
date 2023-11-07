@@ -1,10 +1,13 @@
 // 双向链表
+import { Comparator } from '../util/comparator';
 import { DoublyLinkedListNode } from './doubly-linked-list-node';
 
 export class DoublyLinkedList {
-    constructor() {
+    constructor(compFunc) {
         this.head = null;
         this.tail = null;
+
+        this.compare = new Comparator(compFunc)
     }
 
     add(value) {
@@ -66,7 +69,7 @@ export class DoublyLinkedList {
         let current = this.head;
 
         while (current) {
-            if (current.value === value) {
+            if (this.compare.equal(current.value, value)) {
                 deletedNode = current;
 
                 if (this.head === deletedNode) {
@@ -101,7 +104,7 @@ export class DoublyLinkedList {
 
         let current = this.head;
         while(current) {
-            if (current.value === value) return true;
+            if (this.compare.equal(current.value, value)) return true;
             current = current.next;
         }
 
