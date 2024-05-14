@@ -33,6 +33,19 @@ class EventEmitter {
 
     return this
   }
+
+  once(event) {
+    const callbacks = this.subscribers[event];
+
+    const args = [].slice.call(arguments, 1);
+    callbacks.forEach(callback => {
+      try {
+        callback(...args);
+      } finally {
+        this.off(event, callback);
+      }
+    })
+  }
 }
 
 export default EventEmitter;
